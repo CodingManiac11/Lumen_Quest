@@ -1,0 +1,10 @@
+ const express = require("express");
+const bodyParser = require("body-parser");
+const planRoutes = require("./routes/planRoutes");
+const { init } = require("./models/plans");
+const app = express();
+app.use(bodyParser.json());
+init();
+app.use("/api/plans", planRoutes);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
